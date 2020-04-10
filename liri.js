@@ -4,7 +4,7 @@ var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var axios = require("axios");
 var omdb = require('omdb');
-var bandsintown = require('bandsintown')(faebdcb4e9367a333fbae3f0451c4891);
+// var bandsintown = require('bandsintown')(faebdcb4e9367a333fbae3f0451c4891);
 
 var spotify = new Spotify(keys.spotify);
 
@@ -46,7 +46,11 @@ if (process.argv[2] === "movie-this"){
 else {
     var movie = process.argv.slice(2, process.argv.length).join(" ");
 }
-     
-axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy")      
+var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+console.log(queryUrl);
+
+axios.get(queryUrl).then(function(response){
+    console.log("Release Year: " + response.data.Year);
+})
 
 
