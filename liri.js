@@ -78,11 +78,25 @@ liriMovie();
 // ==================================================================================
 // DO WHAT IT SAYS LIRI -- FS READFILE FROM RANDOM TXT 
 
-fs.readFile('random.txt', 'utf8', function(err, data) {
-    if (err) {
-        return console.log(error)
-    }
+var doWhatItSays = function(){
 
-})
+    fs.readFile('random.txt', 'utf8', function(err, data) {
+        if (err) {
+            return console.log(error)
+        }
+
+        var dataArr = data.split(",");
+
+        if (dataArr.length === 2) {
+            return dataArr[0], data[1];
+        }
+        else if (dataArr.length === 1) {
+            return dataArry[0]
+        }
+    
+    })
+    
+}
+
 
 
