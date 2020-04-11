@@ -75,5 +75,14 @@ var liriMovie = function(movie){
 }
 liriMovie();
 
+// ==================================================================================
+// DO WHAT IT SAYS LIRI -- FS READFILE FROM RANDOM TXT 
+
+fs.readFile('random.txt', 'utf8', function(err, data) {
+    if (err) {
+        return console.log(error)
+    }
+
+})
 
 
