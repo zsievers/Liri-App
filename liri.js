@@ -1,16 +1,69 @@
+// requiring .env file
 require("dotenv").config();
 
-var keys = require("./keys.js");
-var Spotify = require('node-spotify-api');
-var axios = require("axios");
-var omdb = require('omdb');
-var fs = require("fs");
-// var bandsintown = require('bandsintown')(faebdcb4e9367a333fbae3f0451c4891);
+// requiring moment
+var moment = require('moment');
 
+// require file systems 
+var fs = require("fs");
+
+// linking key page
+var keys = require("./keys.js");
+
+// initializing spotify
+var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
+// requiring axios, omdb and bands in town
+var axios = require("axios");
+var omdb = require('omdb');
+var bandsintown = require('bandsintown')(faebdcb4e9367a333fbae3f0451c4891);
 
-// var bandsintown = require('bandsintown')(codingbootcamp);
+// USER COMMAND AND INPUT   
+    var userInput = process.argv[2];
+    var 
+
+// APP LOGIC
+
+function command(userInput, userQuery){
+    switch (userInput){
+        case "concert-this":
+            concertThis();
+            break;
+        case "spotify-this-song":
+            spotifyThisSong();
+            break;
+        case "movie-this":
+            movieThis();
+            break;
+        case "do-what-it-says":
+            doWhatItSays(userQuery);
+            break;
+        default:
+            console.log("I don't know that");
+            break;
+    }
+}
+
+
+
+
+// BANDS IN TOWN
+var liriConcert
+
+if (process.argv[2] === "concert-this"){
+    var artist = process.argv.slice(3, process.argv.length).join(" ");
+}
+else {
+    var artist = process.argv.slice(2, prcess.argv.length).join(" ");
+}
+
+bandsintown.getArtistEventList('Skrillex')
+  .then(function(events) {
+    // return array of events
+  });
+
+
 
 // ==========================================================================================================
 // spotify
