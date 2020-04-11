@@ -4,6 +4,7 @@ var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var axios = require("axios");
 var omdb = require('omdb');
+var fs = require("fs");
 // var bandsintown = require('bandsintown')(faebdcb4e9367a333fbae3f0451c4891);
 
 var spotify = new Spotify(keys.spotify);
@@ -94,7 +95,7 @@ var doWhatItSays = function(){
             return dataArry[0]
         }
     
-    })
+    });
     
 }
 
