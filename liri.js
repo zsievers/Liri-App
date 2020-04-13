@@ -7,6 +7,9 @@ var moment = require("moment");
 // require file systems
 var fs = require("fs");
 
+// colors
+var colors =  require('colors');
+
 // linking key page
 var keys = require("./keys.js");
 
@@ -45,21 +48,23 @@ function command(appCommand, userSearch) {
 }
 command(appCommand, userSearch);
 
+
 // CONCERT-THIS
 
-// function concertThis() {
-//     console.log(`\n *****I found ${userSearch}'s next show*****`);
+function concertThis() {
 
-//     var queryUrl = "https://rest.bandsintown.com/artists/" + userSearch;
+    var artist = userSearch;
+    var bandQueryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=faebdcb4e9367a333fbae3f0451c4891";
 
-//     bandsintown.getArtistEventList(userSearch);
-//     .then(function(events) {
-//       // return array of events
-//     });
+    axios.get(bandQueryUrl).then(function(response) {
+        console.log("\n--------------------------------------------------------\n\nI found it!");
+        console.log("\n--------------------------------------------------------\n");
+        console.log("Venue Name: " + response.data[0].venue.name);
+        console.log("Venue Location: " + response.data[0].venue.name);
+        console.log("Concert Date: " + moment(response.data[0].datetime).format("MM-DD-YYYY"));
 
-
-
-// }
+    });
+}
 
 // SPOTIFY-THIS-SONG
 
@@ -69,18 +74,17 @@ function spotifyThisSong() {
 
   spotify.search({ type: "track", query: userSearch, limit: "10" }, function (err,data) {
     if (err) {
-      console.log("Error occurred: " + err);
+      console.log("Error occurred: " + err.red);
       return;
     }
 
     var songs = data.tracks.items;
 
     for (i = 0; i < songs.length; i++) {
-      console.log(i);
-      console.log("Artisit(s): " + songs[i].artists[0].name);
-      console.log("Song Name: " + songs[i].name);
-      console.log("Preview Song: " + songs[i].external_urls.spotify);
-      console.log("Album: " + songs[i].album.name);
+      console.log(colors.green("Artisit(s): ") + songs[i].artists[0].name);
+      console.log(colors.green("Song Name: ") + songs[i].name);
+      console.log(colors.green("Preview Song: ") + songs[i].external_urls.spotify);
+      console.log(colors.green("Album: ") + songs[i].album.name);
       console.log(
         "\n---------------------------------------------------------\n"
       );
@@ -102,15 +106,15 @@ function movieThis() {
 
     axios.get(queryUrl).then(function (response) {
       console.log("");
-      console.log("Title: " + response.data.Title);
-      console.log("Release Year: " + response.data.Year);
-      console.log("Rated: " + response.data.Rated);
-      console.log("IMDB Rating: " + response.data.imdbRating);
-      console.log("Rotten Tomatoes Rating: " + response.data.Metascore);
-      console.log("Country Produced: " + response.data.Country);
-      console.log("Language: " + response.data.Language);
-      console.log("Plot: " + response.data.Plot);
-      console.log("Main Actors: " + response.data.Actors);
+      console.log(colors.yellow("Title: ") + response.data.Title);
+      console.log(colors.yellow("Release Year: ") + response.data.Year);
+      console.log(colors.yellow("Rated: ") + response.data.Rated);
+      console.log(colors.yellow("IMDB Rating: ") + response.data.imdbRating);
+      console.log(colors.yellow("Rotten Tomatoes Rating: ") + response.data.Metascore);
+      console.log(colors.yellow("Country Produced: ") + response.data.Country);
+      console.log(colors.yellow("Language: ") + response.data.Language);
+      console.log(colors.yellow("Plot: ") + response.data.Plot);
+      console.log(colors.yellow("Main Actors: ") + response.data.Actors);
       console.log("\n");
       console.log("=======================================================================");
     });
