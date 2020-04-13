@@ -26,7 +26,7 @@ var omdb = require('omdb');
 var appCommand = process.argv[2];
 var userSearch = process.argv[3];
 
-// APP LOGIC -- switchback function
+// APP LOGIC -- switch case statement
 function command(appCommand, userSearch) {
   switch (appCommand) {
     case "concert-this":
