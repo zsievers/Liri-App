@@ -89,7 +89,7 @@ function spotifyThisSong() {
       console.log(colors.green("Artisit(s): ") + songs[i].artists[0].name);
       console.log(colors.green("Song Name: ") + songs[i].name);
       console.log(colors.green("Preview Song: ") + songs[i].external_urls.spotify);
-      console.log(colors.green("Album: ") + songs[i].album.name);
+      console.log(colors.green("Album Title: ") + songs[i].album.name);
       console.log(
         "\n---------------------------------------------------------\n"
       );
