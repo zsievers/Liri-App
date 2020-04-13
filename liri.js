@@ -42,7 +42,7 @@ function command(appCommand, userSearch) {
       doWhatItSays(userSearch);
       break;
     default:
-      console.log("I don't know that one");
+      console.log(colors.red("\n*****I don't know that one. Try checking your spelling!"));
       break;
   }
 }
@@ -73,6 +73,10 @@ function spotifyThisSong() {
     console.log("\n--------------------------------------------------------\n\nI found it!");
     console.log("\n--------------------------------------------------------\n");
 
+    if (!userSearch) {
+        userSearch = "The Sign";
+      }
+
   spotify.search({ type: "track", query: userSearch, limit: "10" }, function (err,data) {
     if (err) {
       console.log("Error occurred: " + err.red);
@@ -100,7 +104,7 @@ function movieThis() {
   console.log("\n--------------------------------------------------------\n");
 
   if (!userSearch) {
-    userSearch = "mr nobody";
+    userSearch = "Mr. Nobody";
   }
 
     var queryUrl ="http://www.omdbapi.com/?t=" + userSearch +"&y=&plot=short&apikey=trilogy";
