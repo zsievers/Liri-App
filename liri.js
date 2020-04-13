@@ -57,11 +57,12 @@ function concertThis() {
     var bandQueryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=faebdcb4e9367a333fbae3f0451c4891";
 
     axios.get(bandQueryUrl).then(function(response) {
+        console.log("")
         console.log("\n--------------------------------------------------------\n\nI found it!");
         console.log("\n--------------------------------------------------------\n");
-        console.log("Venue Name: " + response.data[0].venue.name);
-        console.log("Venue Location: " + response.data[0].venue.name);
-        console.log("Concert Date: " + moment(response.data[0].datetime).format("MM-DD-YYYY"));
+        console.log(colors.magenta("Venue Name: ") + response.data[0].venue.name);
+        console.log(colors.magenta("Venue Location: ") + response.data[0].venue.name);
+        console.log(colors.magenta("Concert Date: ") + moment(response.data[0].datetime).format("MM-DD-YYYY"));
 
     });
 }
