@@ -6,6 +6,7 @@ Liri Bot is a command line node app that takes in parameters for bands, songs, m
 Use the command line to to run Liri! 
 <li>Find a song: spotify-this-song <insert song></li><br>
     -This command will pull the Artists, Song Name,  Preview Link and Album Title. 
+    <img src = "gifs/spotify-this-song.gif" width="40" height="40">;
 <li>Find a band's concert info: concert-this <insert band></li><br>
     -This command will pull the Name of the Venue, Venue Location and Concert Date.
 <li>Find a movie's info: movie-this <insert movie title></li><br>
