@@ -28,6 +28,7 @@ Technologies used:
 *** 
 Future Development
 
--I would like to create a tutorial video explaining the game.
--Create a log.txt file so you can append and log previous searches. 
--Add more styling to the command line. 
+- I would like to create a tutorial video explaining the game.
+- Create a log.txt file so you can append and log previous searches. 
+- Add more styling to the command line. 
+- Add a still frame for the gifs.
