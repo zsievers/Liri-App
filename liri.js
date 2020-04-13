@@ -20,52 +20,61 @@ var omdb = require('omdb');
 // var bandsintown = require('bandsintown')(faebdcb4e9367a333fbae3f0451c4891);
 
 // USER COMMAND AND INPUT
-var userInput = process.argv[2];
-var userQuery = process.argv[3];
+var appCommand = process.argv[2];
+var userSearch = process.argv[3];
 
 // APP LOGIC -- switchback function
-function command(userInput, userQuery) {
-  switch (userInput) {
+function command(appCommand, userSearch) {
+  switch (appCommand) {
     case "concert-this":
-      concertThis();
+      concertThis(userSearch);
       break;
     case "spotify-this-song":
-      spotifyThisSong(userQuery);
+      spotifyThisSong(userSearch);
       break;
     case "movie-this":
-      movieThis(userQuery);
+      movieThis(userSearch);
       break;
     case "do-what-it-says":
-      doWhatItSays(userQuery);
+      doWhatItSays(userSearch);
       break;
     default:
       console.log("I don't know that one");
       break;
   }
 }
-command(userInput, userQuery);
+command(appCommand, userSearch);
 
 // CONCERT-THIS
+
+// function concertThis() {
+//     console.log(`\n *****I found ${userSearch}'s next show*****`);
+
+//     var queryUrl = "https://rest.bandsintown.com/artists/" + userSearch;
+
+//     bandsintown.getArtistEventList(userSearch);
+//     .then(function(events) {
+//       // return array of events
+//     });
+
+
+
+// }
 
 // SPOTIFY-THIS-SONG
 
 function spotifyThisSong() {
-  console.log(
-    "\n--------------------------------------------------------\n\nI found it!"
-  );
+    console.log("\n--------------------------------------------------------\n\nI found it!");
+    console.log("\n--------------------------------------------------------\n");
 
-  console.log("\n--------------------------------------------------------\n");
-
-  spotify.search({ type: "track", query: userQuery, limit: "3" }, function (
-    err,
-    data
-  ) {
+  spotify.search({ type: "track", query: userSearch, limit: "10" }, function (err,data) {
     if (err) {
       console.log("Error occurred: " + err);
       return;
     }
 
     var songs = data.tracks.items;
+
     for (i = 0; i < songs.length; i++) {
       console.log(i);
       console.log("Artisit(s): " + songs[i].artists[0].name);
@@ -85,11 +94,11 @@ function movieThis() {
   console.log("\n--------------------------------------------------------\n\nI found it!");
   console.log("\n--------------------------------------------------------\n");
 
-  if (!userQuery) {
-    userQuery = "mr nobody";
+  if (!userSearch) {
+    userSearch = "mr nobody";
   }
 
-    var queryUrl ="http://www.omdbapi.com/?t=" + userQuery +"&y=&plot=short&apikey=trilogy";
+    var queryUrl ="http://www.omdbapi.com/?t=" + userSearch +"&y=&plot=short&apikey=trilogy";
 
     axios.get(queryUrl).then(function (response) {
       console.log("");
@@ -105,8 +114,7 @@ function movieThis() {
       console.log("\n");
       console.log("=======================================================================");
     });
-  };
-
+};
 
 // DO-WHAT-IT-SAYS
 
@@ -117,10 +125,10 @@ function doWhatItSays(){
         };
         var dataArr = data.split(",");
 
-        userInput = dataArr[0];
-        userQuery = dataArr[1];
+        appCommand = dataArr[0];
+        userSearch = dataArr[1];
         
-        command(userInput, userQuery);
+        command(appCommand, userSearch);
     });
 };
 
